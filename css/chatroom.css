@@ -1,0 +1,74 @@
+.button {
+	width: 100%;
+	height: 30px;
+	font-size: 20px;
+	color: #bdae9d;
+	background-color: #2a211c;
+	border: none;
+	}
+.button:hover {
+	color: #2a211c;
+	background-color: #bdae9d;			
+	}
+			
+body{
+	background-color: #2a211c;
+	word-wrap: break-word;
+	}
+	
+.title {
+	text-align: center;
+	/*color: #bdae9d;*/
+	margin:0%;
+	}
+			
+.text{
+	margin-left: 10%;
+	margin-right: 10%;
+	}
+			
+.src{
+	background-color: black;
+	color: green;
+	}
+	
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('https://saikou.ufile.ucloud.com.cn/font/Inconsolata.eot');/*IE 4.0+*/
+    src: url('https://saikou.ufile.ucloud.com.cn/font/Inconsolata.eot?#iefix') format('embedded-opentype'),
+		 url('https://saikou.ufile.ucloud.com.cn/font/Inconsolata.woff') format('woff'),
+		 url('https://saikou.ufile.ucloud.com.cn/font/Inconsolata.ttf') format('truetype'), /*Firefox Safari Opera*/
+		 url('https://saikou.ufile.ucloud.com.cn/font/Inconsolata.svg#webfont34M5alKg') format('svg');/*Chrome Iphone*/
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'GenWanMin-JP';
+    src: url('https://saikou.ufile.ucloud.com.cn/font/GenWanMinJP-Regular.eot');/*IE 4.0+*/
+    src: url('https://saikou.ufile.ucloud.com.cn/font/GenWanMinJP-Regular.eot?#iefix') format('embedded-opentype'),
+		 url('https://saikou.ufile.ucloud.com.cn/font/GenWanMinJP-Regular.woff') format('woff'),
+		 url('https://saikou.ufile.ucloud.com.cn/font/GenWanMinJP-Regular.ttf') format('truetype'), /*Firefox Safari Opera*/
+		 url('https://saikou.ufile.ucloud.com.cn/font/GenWanMinJP-Regular.svg#webfont34M5alKg') format('svg');/*Chrome Iphone*/
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'GenWanMin-TW';
+    src: url('https://saikou.ufile.ucloud.com.cn/font/GenWanMinTW-Regular.eot');/*IE 4.0+*/
+    src: url('https://saikou.ufile.ucloud.com.cn/font/GenWanMinTW-Regular.eot?#iefix') format('embedded-opentype'),
+		 url('https://saikou.ufile.ucloud.com.cn/font/GenWanMinTW-Regular.woff') format('woff'),
+		 url('https://saikou.ufile.ucloud.com.cn/font/GenWanMinTW-Regular.ttf') format('truetype'), /*Firefox Safari Opera*/
+		 url('https://saikou.ufile.ucloud.com.cn/font/GenWanMinTW-Regular.svg#webfont34M5alKg') format('svg');/*Chrome Iphone*/
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'SourceHanSansCN-Regular';
+    src: url('https://saikou.ufile.ucloud.com.cn/font/SourceHanSansCN-Regular.eot');/*IE 4.0+*/
+    src: url('https://saikou.ufile.ucloud.com.cn/font/SourceHanSansCN-Regular.eot?#iefix') format('embedded-opentype'),
+		 url('https://saikou.ufile.ucloud.com.cn/font/SourceHanSansCN-Regular.woff') format('woff'),
+		 url('https://saikou.ufile.ucloud.com.cn/font/SourceHanSansCN-Regular.ttf') format('truetype'), /*Firefox Safari Opera*/
+		 url('https://saikou.ufile.ucloud.com.cn/font/SourceHanSansCN-Regular.svg#webfont34M5alKg') format('svg');/*Chrome Iphone*/
+    font-weight: normal;
+    font-style: normal;
+}
