@@ -4,21 +4,22 @@
         <title>Chatroom</title>
 		<meta charset="utf-8" />
 
-		<link rel="stylesheet" href="./css/chatroom.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="../css/chatroom.css" type="text/css" media="all" />
 
 		<script type="text/javascript" src="https://cdn.wilddog.com/sdk/js/2.5.17/wilddog.js"></script>
 
-        <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="./js/jquery.s2t.js"></script>
-		<script type="text/javascript" src="./js/jquery.xcolor.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.s2t.js"></script>
+		<script type="text/javascript" src="../js/jquery.xcolor.min.js"></script>
 
-		<script type="text/javascript" src="./js/chatroom.js"></script>
-		<script type="text/javascript" src="./js/crypto-js/crypto-js.js"></script>
+		<script type="text/javascript" src="../js/chatroom.js"></script>
+		<script type="text/javascript" src="../js/crypto-js/crypto-js.js"></script>
+        <script type="text/javascript" src="../js/vue-debug.js"></script>
 		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 
 
         <script>
-            var infomsg = "本站仍在搭建中，功能实现进度：\nX 登陆注册\nX 聊天\nX 文字颜色\nX 发送图片\nX 云端同步删除\nX help()\nX 登陆密码\nO 用户自定义配置";
+            var infomsg = "本站仍在搭建中，功能实现进度：\nX 登陆注册\nX 聊天\nX 文字颜色\nX 发送图片\nX 云端同步删除\nO help()\nX 登陆密码\nO 用户自定义配置";
             var text = "text";
 			var url = "url";
 			var img = "img";
@@ -229,7 +230,6 @@
 					var introtext = introtext;
 					var message_t = $.s2t(message);
 					var introtext_t = $.s2t(introtext);
-					console.warn("3消息未发送");
 					chat.push({"message":message_t,"type":msgtype,"introtext":introtext_t,"sendBy":username,"sendTime":getTime(),"color":color});
 					return console.info("消息已发送");
 				}
