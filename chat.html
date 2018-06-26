@@ -5,31 +5,31 @@
 		<meta charset="utf-8" />
 
 		<link rel="stylesheet" href="../css/chatroom.css" type="text/css" media="all" />
-		
+
 		<script type="text/javascript" src="https://cdn.wilddog.com/sdk/js/2.5.17/wilddog.js"></script>
-		
+
         <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="../js/jquery.s2t.js"></script>
 		<script type="text/javascript" src="../js/jquery.xcolor.min.js"></script>
-		
+
 		<script type="text/javascript" src="../js/chatroom.js"></script>
 		<script type="text/javascript" src="../js/crypto-js/crypto-js.js"></script>
-		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>  
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 
-		
+
         <script>
             var infomsg = "本站仍在搭建中，功能实现进度：\nX 登陆注册\nX 聊天\nX 文字颜色\nX 发送图片\nX 云端同步删除\nO help()\nX 登陆密码\nO 用户自定义配置";
             var text = "text";
 			var url = "url";
 			var img = "img";
 			var username = null;
-			
+
 			function send() {
 				var message=$(".userInput");
 				msg(message.val(),"#bdae9d","null","text");
 				message.val("");
 			}
-			
+
 			function clearMsg(password) {
 				var password_sha = CryptoJS.SHA256(password).toString();
 				if (password_sha=="0eb88d81684fbb613d3963d014182595e1edd5ec0070bb3c69d13ee3ce407ff7"){
@@ -39,13 +39,13 @@
 					console.warn("password error");
 				}
 			}
-			
+
 			function focusTheMessage(id){
 				var Y = $("#"+id).position().top;
 				 window.scrollTo(100,Y);
 				return Y;
 			}
-			
+
 			function FloatImg(imgurl){
 				var IFW = $(".FloatWindow");//IFWindow = Img Float Window
 				var FI = $(".floatimg");//FI = Float Img
@@ -65,7 +65,7 @@
 					left : "0",
 					height:document.body.scrollHeight,
 				});
-				
+
 				FI.css({
 					display:"inline",
 					position:"absolute",
@@ -83,7 +83,7 @@
 					height:"100%",
 				},700);
 			}
-			
+
 			function CloseFloatImg(){
 				var IFW = $(".FloatWindow");//IFWindow = Img Float Window
 				var FI = $(".floatimg");
@@ -107,12 +107,12 @@
 				IFW.empty();
 				IFW.removeAttr("style");
 			}
-			
+
 			var config = {
 				syncURL: "https://wd6413466545jrbfqv.wilddogio.com"};
 			wilddog.initializeApp(config);
 			var chat = wilddog.sync().ref("/chat");
-			
+
 			function reg(username,password) {
 				var userRoot = wilddog.sync().ref("/users");
 				var password_sha = CryptoJS.SHA256(password).toString();/*SHA256加密*/
@@ -142,7 +142,7 @@
 					}
 				);
 			}
-			
+
 			function login(username,password) {
 				var userRoot = wilddog.sync().ref("/users");
 				userRoot.once("value")
@@ -154,7 +154,7 @@
 						var userBackgroundColor = profileFloder.child("color/bgColor").val();
 						var userBackgroundImage = profileFloder.child("bgimg").val();
 						var img_src = "https://res.cloudinary.com/duquoda8z/image/fetch/o_60,b_black/";
-						
+
 						if (name == false) {
 							console.error("'" +username+"'未注册，请用reg('"+username+"',password)来注册")
 							tip("未注册","red");
@@ -178,9 +178,9 @@
 						}
 					}
 				);
-				
+
 			}
-			
+
 			function msg(message,color,introtext,type) {
 				if (introtext == "" || introtext == null || !introtext) {
 					var introtext = "none";
@@ -202,7 +202,7 @@
 						var msgtype = text;
 						break;
 				}
-				
+
 				if (username == null) {
 					console.error("未登录，请用login('用户名')来登录");
 					tip("未登录","red");
@@ -234,7 +234,7 @@
 					return console.info("消息已发送");
 				}
 			}
-			
+
 			function loaded() {
 				var chatBox = $(".chatmsg");
 				if (getTime() == "00:00:00"){
@@ -252,16 +252,16 @@
 					var color = snapshot.val().color;
 					var introtext = snapshot.val().introtext;
 					var key_text = snapshot.key();
-					
+
 					var sendTime_html = "<span style='color:grey' class='time'>"+sendTime+"&nbsp;&nbsp;</span>";
 					var user_html = "<span style='color:white;'>"+user+"</span><b style='color:grey;'>>_&nbsp;</b>";
 					var img_src = "https://res.cloudinary.com/duquoda8z/image/fetch/c_scale,q_auto:eco,r_10,w_200/"+text;
-					
+
 					var innerText = "<div class='msg' id='"+key_text+"'>"+sendTime_html+user_html+"<div class='msgtext' style='color:"+color+"'>"+text+"</div></div>";
 					var innerImg = "<div class='msg' id='"+key_text+"'>"+sendTime_html+user_html+"<div class='msgtext'><b style='color:white;' id='"+key_text+"'>"+introtext+"</b><img src='"+img_src+"'' onclick='FloatImg(\""+text+"\");' class='msg' id='"+key_text+"' /><small><em>点击图片看原图</em></small></div></div>";
 					var innerLink = "<div class='msg' id='"+key_text+"'>"+sendTime_html+user_html+"<div class='msgtext'><a href='"+text+"' style='color:"+color+"' id='"+key_text+"'>"+introtext+"</a></div></div>";
 					console.log(key_text + ": type:" +type+ " " +user+ ": '"+text+"' at '"+sendTime+"'"+color+" "+introtext);
-					
+
 					switch (type) {
 						case url:
 							var msgtype = url;
@@ -308,11 +308,11 @@
 					} else if (type == "img") {
 						$("img#"+key_text).attr({"src":img_src});
 						$("b#"+key_text).text(text);
-						
+
 					} else if (type == "url") {
 						$("a#"+key_text).attr({"href":img_src});
 						$("a#"+key_text).text(text);
-						
+
 					} else {console.error(key_text+text+user+type+color+introtext+img_src);}
 				});
 			}
@@ -333,7 +333,7 @@
 				-webkit-flex-warp: warp;
 				-flex-warp: warp;
 				opacity:1;
-				
+
 			}
 			.msgtext {
 				font-size: 23px;
@@ -352,7 +352,7 @@
 				height: 1px;
 				background-image: linear-gradient(to right ,rgba(255, 255, 255, 0.8) ,rgba(255, 255, 255, 0.55) ,rgba(255, 255, 255, 0));
 				width: 60%;
-				color: #987cb9; 
+				color: #987cb9;
 				SIZE: 3;
 				opacity:1;
 			}
@@ -363,7 +363,7 @@
 				transform:translate(50%);
 				opacity:1;
 			}
-			
+
 			::-webkit-scrollbar {
 				width: 5px;
 				background-color: #2a211c;
@@ -388,34 +388,34 @@
 			::-webkit-scrollbar-corner {
 				display:none;
 			}
-			
-			@-moz-document url-prefix(http://),url-prefix(https://) {   
-				/* 滚动条颜色 */  
-				scrollbar {   
-					-moz-appearance: none !important;   
-					background: #2a211c !important;   
-				}   
-				/* 滚动条按钮颜色 */  
-				thumb,scrollbarbutton {   
-					-moz-appearance: none !important;   
-					background-color: #bdae9d !important;   
-				}   
-				/* 鼠标悬停时按钮颜色 */  
-				
-				thumb:hover,scrollbarbutton:hover {   
-					-moz-appearance: none !important;   
-					background-color: #bdae9d !important;   
-				}   
-				/* 隐藏上下箭头 */  
-				scrollbarbutton {   
-					display: none !important;   
-				}   
-				/* 纵向滚动条宽度 */  
-				scrollbar[orient="vertical"] {   
-					display:none !important;   
-				}   
+
+			@-moz-document url-prefix(http://),url-prefix(https://) {
+				/* 滚动条颜色 */
+				scrollbar {
+					-moz-appearance: none !important;
+					background: #2a211c !important;
+				}
+				/* 滚动条按钮颜色 */
+				thumb,scrollbarbutton {
+					-moz-appearance: none !important;
+					background-color: #bdae9d !important;
+				}
+				/* 鼠标悬停时按钮颜色 */
+
+				thumb:hover,scrollbarbutton:hover {
+					-moz-appearance: none !important;
+					background-color: #bdae9d !important;
+				}
+				/* 隐藏上下箭头 */
+				scrollbarbutton {
+					display: none !important;
+				}
+				/* 纵向滚动条宽度 */
+				scrollbar[orient="vertical"] {
+					display:none !important;
+				}
 			}
-			
+
 			.input{
 				z-index: 9999;
 				position: absolute;
@@ -451,7 +451,7 @@
 	<hr />
 	<br />
 	<div class="chatmsg"></div>
-	<div class="input"><input class="userInput"></input><button class="clickbutton" type="button" onclick="send()">SEND!!</button></div>
+	<!--<div class="input"><input class="userInput"></input><button class="clickbutton" type="button" onclick="send()">SEND!!</button></div>-->
 	<div class="FloatWindow" onclick="CloseFloatImg()"></div>
 
 	<script>
