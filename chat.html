@@ -15,7 +15,7 @@
 		<script type="text/javascript" src="./js/chatroom.js"></script>
 		<script type="text/javascript" src="./js/crypto-js/crypto-js.js"></script>
 		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-
+<script src="//cdn.jsdelivr.net/npm/eruda"></script>
 
         <script>
             var infomsg = "本站仍在搭建中，功能实现进度：\nX 登陆注册\nX 聊天\nX 文字颜色\nX 发送图片\nX 云端同步删除\nX help()\nX 登陆密码\nO 用户自定义配置";
@@ -23,6 +23,25 @@
 			var url = "url";
 			var img = "img";
 			var username = null;
+
+function IsPC() {
+  var userAgentInfo = navigator.userAgent;
+  var Agents = ["Android", "iPhone",
+        "SymbianOS", "Windows Phone",
+        "iPad", "iPod"];
+  var flag = true;
+  for (var v = 0; v < Agents.length; v++) {
+    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+      flag = false;
+      break;
+    }
+  }
+  return flag;
+}
+if (!IsPC()){
+ eruda.init();
+    console.log('控制台打印信息');
+}
 
 			function send() {
 				var message=$(".userInput");
